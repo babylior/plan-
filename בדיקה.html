@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>לוח תכנון לימודים מורחב - יוני-יולי 2025</title>
+    <style>
+        /* === General Styles & Resets - Khan Academy KIDS Inspired (Improved Header) === */
+        :root {
+            --font-primary: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            
+            --kids-bg-page: #fff9e6; 
+            --kids-bg-container: #ffffff;
+            --kids-text-primary: #4A4A4A; 
+            --kids-text-secondary: #7B7B7B;
+            
+            --kids-blue-sky: #69c0ff;      
+            --kids-green-grass: #95de64;   
+            --kids-yellow-sun: #ffd666;    
+            --kids-pink-bubblegum: #ff85c0;
+            --kids-purple-grape: #b37feb;  
+            --kids-orange-energetic: #ffab66; 
+
+            /* Header specific adjustments based on Option 3 ("גן קסום ומצויר") */
+            --header-title-color: #8e24aa; /* סגול כהה וקריא לכותרת (מהדוגמה) */
+            --header-print-btn-bg: var(--kids-green-grass); /* ירוק רענן לכפתור הדפסה */
+            --header-tab-bg-start: var(--kids-yellow-sun); /* צהוב חם לטאבים */
+            --header-tab-bg-end: #fde27c; /* גוון צהוב מעט בהיר יותר לגרדיאנט */
+            --header-tab-border: #e6a100; /* גבול כתום-צהוב */
+            --header-tab-active-bg-start: var(--kids-blue-sky); /* כחול בהיר לטאב פעיל */
+            --header-tab-active-bg-end: #57b5f7;
+            --header-tab-active-border: #368ed4;
+            --header-tab-text-color: var(--kids-text-primary);
+
+
+            --color-primary-accent: var(--kids-blue-sky); /* עדיין נשמש בזה לשאר העמוד אם צריך */
+            --color-primary-light: #e6f7ff; 
+            --color-primary-dark: #368ed4;  
+            --color-confirm: var(--kids-green-grass);
+            --color-confirm-light-bg: #f6ffed; 
+
+            --border-radius-main: 28px; 
+            --border-radius-medium: 20px;
+            --border-radius-small: 12px;
+            
+            --box-shadow-playful: 0 6px 18px rgba(0, 0, 0, 0.1); 
+            --box-shadow-subtle: 0 3px 10px rgba(0, 0, 0, 0.06);
+
+            --course-comm-law: var(--kids-blue-sky);
+            --course-social-psych: var(--kids-purple-grape); 
+            --course-qualitative: var(--kids-yellow-sun);
+            --course-stats: var(--kids-green-grass);
+            --course-psychopathology: var(--kids-pink-bubblegum); 
+            --course-experimental: var(--kids-orange-energetic);
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.75;
+            margin: 0;
+            padding: 20px 10px; 
+            background-color: var(--kids-bg-page);
+            color: var(--kids-text-primary);
+            font-size: 16.5px; 
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .main-container {
+            max-width: 1200px; 
+            margin: 20px auto;
+            padding: 25px 30px; /* צמצמתי מעט את הפדינג העליון והתחתון כאן */
+            background-color: var(--kids-bg-container);
+            border-radius: var(--border-radius-main);
+            box-shadow: var(--box-shadow-playful);
+            /* הורדתי את המסגרת הצהובה מהמיכל הראשי כדי שהכותרת תבלוט יותר */
+        }
+
+        /* === Improved Header Elements === */
+        .page-header-wrapper { /* מיכל חדש לכותרת ולכפתור הדפסה */
+            display: flex;
+            justify-content: space-between; /* כותרת בצד אחד, כפתור בצד שני */
+            align-items: center; /* יישור אנכי */
+            margin-bottom: 25px; /* מרווח לפני הטאבים */
+            padding: 0 10px; /* ריווח פנימי קל */
+        }
+
+        h1 { /* עכשיו יתייחס לכותרת בתוך .page-header-wrapper */
+            color: var(--header-title-color); 
+            font-size: 2.8em; /* מעט קטן יותר מהניסיון הקודם, יותר מאוזן */
+            font-weight: 700;
+            margin: 0; /* הסרת margin חיצוני כי הוא מטופל ע"י ה-wrapper */
+            text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.6); /* צל לבן עדין להבלטה */
+            flex-grow: 1; /* מאפשר לכותרת לתפוס מקום */
+            text-align: right; /* יישור לימין (מתאים לעברית) */
+        }
+
+        .print-button-container { /* עיצוב מחודש למיכל של כפתור ההדפסה */
+            margin: 0; /* הסרת margin חיצוני, הוא חלק מה-flex */
+        }
+
+        .print-button { /* שינויים בכפתור ההדפסה */
+            padding: 10px 20px; 
+            background-color: var(--header-print-btn-bg); 
+            color: white;
+            border: none;
+            border-radius: var(--border-radius-medium); 
+            cursor: pointer;
+            font-size: 1em; /* גודל פונט סטנדרטי יותר לכפתור משני */
+            font-weight: 600; 
+            transition: all 0.2s ease;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+            display: flex; /* ליישור האייקון והטקסט אם יהיה */
+            align-items: center;
+            gap: 8px; /* רווח בין האייקון לטקסט (אם יש) */
+        }
+        .print-button:hover {
+            background-color: #7cb342; /* ירוק מעט כהה יותר */
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+         .print-button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+
+
+        /* === Week Navigation Tabs - "גן קסום ומצויר" Style === */
+        .week-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px; /* מעט יותר רווח */
+            margin-bottom: 30px;
+            padding: 10px 0; /* פדינג רק למעלה ולמטה */
+        }
+        .week-tab {
+            padding: 12px 24px; 
+            background-image: linear-gradient(to bottom, var(--header-tab-bg-start), var(--header-tab-bg-end));
+            color: var(--header-tab-text-color);
+            border: 2px solid var(--header-tab-border); 
+            border-radius: var(--border-radius-medium); 
+            cursor: pointer;
+            font-size: 1.05em; 
+            font-weight: 600; 
+            transition: all 0.15s ease-out;
+            box-shadow: 0 3px 0px var(--header-tab-border); /* צל תחתון */
+            text-shadow: 1px 1px 0px rgba(255,255,255,0.3);
+        }
+        .week-tab:hover {
+            transform: translateY(1px);
+            box-shadow: 0 2px 0px var(--header-tab-border);
+            background-image: linear-gradient(to bottom, var(--header-tab-bg-end), var(--header-tab-bg-start)); /* היפוך גרדיאנט קל */
+        }
+        .week-tab.active {
+            background-image: linear-gradient(to bottom, var(--header-tab-active-bg-start), var(--header-tab-active-bg-end));
+            color: white;
+            border-color: var(--header-tab-active-border);
+            box-shadow: inset 0 2px 3px rgba(0,0,0,0.15), 0 1px 0px var(--header-tab-active-border);
+            transform: translateY(2px); /* נראה "לחוץ" */
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.2);
+        }
+
+        /* === Week Content Sections (כפי שהיה, עם התאמות קלות לרקע התוכן) === */
+        .week-content {
+            display: none;
+            padding: 25px;
+            border: 2px dashed var(--kids-pink-bubblegum); 
+            border-radius: var(--border-radius-medium);
+            background-color: #fffdf7; /* רקע קרם-לבן בהיר מאוד לתוכן השבועי, קצת שונה מרקע הדף */
+            margin-top: 15px;
+        }
+        .week-content.active {
+            display: block;
+        }
+         .week-header { 
+            display: none; 
+        }
+        .week-header h2 {
+             color: var(--kids-orange-energetic);
+             margin-bottom: 25px;
+             font-size: 2.2em;
+             font-weight: 700;
+             text-align: center;
+             border-bottom: 3px dotted var(--kids-orange-energetic);
+             padding-bottom: 10px;
+        }
+
+        .weekly-overview {
+            margin-bottom: 30px;
+            padding: 25px;
+            background-color: var(--kids-green-grass); 
+            color: white; 
+            border-radius: var(--border-radius-medium);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1); 
+        }
+        .weekly-overview h3 { 
+            color: white;
+            margin-top: 0;
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+        }
+        .weekly-overview h4 { 
+            color: var(--kids-yellow-sun); 
+            font-size: 1.4em;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid var(--kids-yellow-sun);
+            padding-bottom: 8px;
+            font-weight: 600;
+        }
+        .weekly-overview p {
+            color: #f0f0f0; 
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+        .weekly-overview p.dynamic-blocks-note {
+            font-style: normal; 
+            font-size: 0.95em;
+            background-color: rgba(255,255,255,0.15); 
+            padding: 8px;
+            border-radius: var(--border-radius-small);
+        }
+        .weekly-overview ul {
+            padding-right: 0;
+            list-style: none;
+        }
+        .weekly-overview ul li {
+            margin-bottom: 12px;
+            padding-right: 30px; 
+            position: relative;
+            font-size: 1.05em;
+        }
+        .weekly-overview ul.anchors li::before {
+            content: '🎯'; 
+            position: absolute;
+            right: 0; top: -2px;
+            font-size: 1.5em; 
+        }
+        .weekly-overview ul.dynamic-blocks li::before {
+            content: '🧩'; 
+            position: absolute;
+            right: 0; top: -2px;
+            font-size: 1.5em;
+        }
+        .dynamic-block-course-name { font-weight: 700; }
+        .comm-law .dynamic-block-course-name,
+        .social-psych .dynamic-block-course-name,
+        .qualitative .dynamic-block-course-name,
+        .stats .dynamic-block-course-name,
+        .psychopathology .dynamic-block-course-name,
+        .experimental .dynamic-block-course-name {
+             background-color: rgba(255,255,255,0.8); 
+             color: #333; 
+             padding: 2px 6px;
+             border-radius: 5px;
+             display: inline-block; 
+        }
+
+        /* === Daily Breakdown - "Bubbly" Cards (כמו קודם) === */
+        .daily-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px;
+        }
+        .day-card {
+            background-color: var(--kids-bg-container);
+            border: 3px solid var(--kids-pink-bubblegum); 
+            border-radius: var(--border-radius-main); 
+            padding: 25px;
+            box-shadow: var(--box-shadow-playful);
+            transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease;
+        }
+        .day-card:hover {
+            transform: translateY(-8px) rotate(1deg); 
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        .day-card h4 { 
+            margin-top: 0;
+            color: var(--kids-orange-energetic); 
+            font-size: 1.8em; 
+            font-weight: 700;
+            text-align: center;
+            border-bottom: 3px dotted var(--kids-orange-energetic);
+            padding-bottom: 12px;
+            margin-bottom: 25px;
+        }
+        .day-card h5 { 
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.3em;
+            font-weight: 700; 
+            color: var(--kids-text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; 
+        }
+        .day-card h5 .emoji { margin-left: 10px; font-size: 1.5em; }
+        .day-card h5.mandatory-title { color: #d93025; } 
+        .day-card h5.mandatory-title .emoji { color: #d93025; }
+        .day-card h5.recommended-title { color: var(--kids-blue-sky); }
+        .day-card h5.recommended-title .emoji { color: var(--kids-blue-sky); }
+        .day-card h5.bonus-title { color: var(--kids-purple-grape); }
+        .day-card h5.bonus-title .emoji { color: var(--kids-purple-grape); }
+
+        .day-card ul {
+            padding-right: 0;
+            list-style-type: none;
+        }
+        .day-card ul li {
+            margin-bottom: 12px;
+            padding: 15px; 
+            position: relative;
+            border-radius: var(--border-radius-medium); 
+            background-color: #f7f9fc; 
+            border: 2px solid transparent; 
+            line-height: 1.6;
+            transition: all 0.2s ease-in-out;
+            display: flex; 
+            align-items: center; 
+            box-shadow: var(--box-shadow-subtle);
+        }
+        .day-card ul li:hover {
+            border-color: var(--kids-yellow-sun); 
+            transform: scale(1.03); 
+            box-shadow: var(--box-shadow-playful);
+        }
+        .day-card ul li input[type="checkbox"] {
+            margin-left: 15px; 
+            margin-right: 8px;
+            min-width: 22px; 
+            height: 22px;
+            cursor: pointer;
+            accent-color: var(--color-confirm);
+            border: 2px solid var(--kids-text-secondary); 
+            border-radius: 5px;
+            appearance: none; 
+            background-color: white;
+            position: relative;
+        }
+        .day-card ul li input[type="checkbox"]:checked {
+            background-color: var(--color-confirm);
+            border-color: var(--kids-green-grass);
+        }
+        .day-card ul li input[type="checkbox"]:checked::before { 
+            content: '✔';
+            font-size: 16px;
+            color: white;
+            position: absolute;
+            top: 0px;
+            left: 4px;
+            font-weight: bold;
+        }
+
+        .day-card ul li label {
+            cursor: pointer;
+            flex-grow: 1; 
+            font-size: 1.05em; 
+        }
+
+        .day-card ul.recommended-tasks li {
+            background-color: var(--kids-bg-container);
+            border-left-width: 0;
+            border-right-width: 8px; 
+            border-right-style: solid;
+        }
+        .day-card ul.recommended-tasks li.task-comm-law { border-right-color: var(--course-comm-law); }
+        .day-card ul.recommended-tasks li.task-social-psych { border-right-color: var(--course-social-psych); }
+        .day-card ul.recommended-tasks li.task-qualitative { border-right-color: var(--course-qualitative); }
+        .day-card ul.recommended-tasks li.task-stats { border-right-color: var(--course-stats); }
+        .day-card ul.recommended-tasks li.task-psychopathology { border-right-color: var(--course-psychopathology); }
+        .day-card ul.recommended-tasks li.task-experimental { border-right-color: var(--course-experimental); }
+
+        .day-card ul.recommended-tasks li strong { 
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9em; 
+            padding: 3px 8px;
+            border-radius: var(--border-radius-small);
+            color: white; 
+            text-align: center; 
+        }
+        .day-card ul.recommended-tasks li.task-comm-law strong { background-color: var(--course-comm-law); }
+        .day-card ul.recommended-tasks li.task-social-psych strong { background-color: var(--course-social-psych); }
+        .day-card ul.recommended-tasks li.task-qualitative strong { background-color: var(--course-qualitative); color: #333; }
+        .day-card ul.recommended-tasks li.task-stats strong { background-color: var(--course-stats); }
+        .day-card ul.recommended-tasks li.task-psychopathology strong { background-color: var(--course-psychopathology); }
+        .day-card ul.recommended-tasks li.task-experimental strong { background-color: var(--course-experimental); }
+        
+        .task-completed label {
+            text-decoration: wavy line-through #ff7043; 
+            color: var(--kids-text-secondary) !important;
+            opacity: 0.7;
+        }
+        .task-completed {
+            background-color: var(--color-confirm-light-bg) !important; 
+            border-color: var(--color-confirm) !important;
+            box-shadow: inset 0 0 10px rgba(149, 222, 100, 0.3); 
+        }
+        .task-completed strong { 
+            opacity: 0.8;
+        }
+
+        /* === Print Styles (Mostly unchanged, but ensure header elements are handled if they were in print before) === */
+        @media print {
+            /* ... (רוב סגנונות ההדפסה נשארים כפי שהיו, עם התאמות קלות במידת הצורך) ... */
+            body { font-family: Arial, sans-serif; font-size: 10pt; color: #000 !important; background-color: #fff !important; -webkit-print-color-adjust: exact; color-adjust: exact; padding: 0.5cm; line-height: 1.4; }
+            .main-container { box-shadow: none !important; padding: 0 !important; margin: 0 !important; max-width: 100% !important; border-radius: 0 !important; border: none !important; background-color: #fff !important;}
+            .page-header-wrapper { display: block !important; margin-bottom: 8mm !important; padding: 0 !important; } /* שינוי ל-block להדפסה */
+            h1 { font-size: 18pt !important; text-align: right !important; margin: 0 0 5mm 0 !important; color: #000 !important; text-shadow: none !important;}
+            .print-button-container, .week-tabs { display: none !important; } /* הסתרת כפתור הדפסה וטאבים בהדפסה */
+
+            .week-content { display: block !important; border: 1px solid #ccc !important; padding: 10px !important; margin-bottom: 10mm; page-break-after: always; background-color: #fff !important; border-radius: 0 !important; }
+            .week-header {display: block !important;} 
+            .week-header h2 { font-size: 12pt !important; background-color: #eee !important; padding: 5px !important; border-bottom: 1px solid #aaa !important; color: #000 !important; margin-bottom: 5mm !important; text-align: right !important; text-shadow: none !important;}
+            
+            .weekly-overview { background-color: #f5f5f5 !important; color: #000 !important; border-left: none !important; border: 1px solid #bbb !important; padding: 8px; margin-bottom: 6mm; border-radius: 0 !important; box-shadow: none !important;}
+            .weekly-overview h3, .weekly-overview h4 { color: #000 !important; border-bottom: 1px solid #ccc !important; padding-bottom: 3px; font-size: 1.1em; font-weight: bold; text-shadow: none !important;}
+            .weekly-overview h3 { font-size: 1.3em; }
+            .weekly-overview p, .weekly-overview ul li { color: #000 !important; font-size: 0.95em;}
+            .weekly-overview p.dynamic-blocks-note { background-color: #efefef !important; padding: 5px;}
+            .weekly-overview ul.anchors li::before, .weekly-overview ul.dynamic-blocks li::before { display: inline; content: "• "; position: static; font-size: 1em; margin-left:0; padding-right: 5px; color: #000 !important;}
+            .dynamic-block-course-name { background-color: #e0e0e0 !important; color: #000 !important; padding: 1px 3px !important; border-radius: 3px !important;}
+            
+            .daily-breakdown { display: block !important; }
+            .day-card { width: 100% !important; box-shadow: none !important; border: 1px solid #aaa !important; margin-bottom: 4mm; padding: 6px !important; background-color: #fff !important; page-break-inside: avoid; border-radius: 0 !important; }
+            .day-card h4 {font-size: 1.2em !important; color: #000 !important; border-bottom: 1px solid #ccc !important; padding-bottom: 4px; margin-bottom: 10px; text-align: right !important;}
+            .day-card h5 {font-size: 1.05em !important; color: #000 !important; font-weight: bold;}
+            .day-card ul { padding-right: 5px !important; }
+            .day-card ul li {
+                background-color: #ffffff !important;
+                border: 1px solid #ddd !important;
+                padding: 4px !important; margin-bottom: 3px !important;
+                box-shadow: none !important; line-height: 1.5;
+                display: flex !important; align-items: flex-start !important; border-radius: 0 !important;
+            }
+            .day-card ul li input[type="checkbox"] { display: inline-block !important; margin-left: 5px !important; min-width: 12px !important; height: 12px !important; appearance: auto !important; background-color: transparent !important; border: 1px solid #555 !important;} 
+            .day-card ul li input[type="checkbox"]:checked::before { display: none !important; }
+            .day-card ul li label { display: inline !important; font-size: 0.9em;}
+
+            .day-card ul.recommended-tasks li {
+                border: 1px solid #999 !important;
+                border-right-width: 4px !important; 
+                border-left-width: 1px !important;
+            }
+            .day-card ul.recommended-tasks li.task-comm-law { border-right-color: var(--course-comm-law) !important; }
+            /* ... (שאר צבעי הקורסים להדפסה) ... */
+            .day-card ul.recommended-tasks li.task-social-psych { border-right-color: var(--course-social-psych) !important; }
+            .day-card ul.recommended-tasks li.task-qualitative { border-right-color: var(--course-qualitative) !important; }
+            .day-card ul.recommended-tasks li.task-stats { border-right-color: var(--course-stats) !important; }
+            .day-card ul.recommended-tasks li.task-psychopathology { border-right-color: var(--course-psychopathology) !important; }
+            .day-card ul.recommended-tasks li.task-experimental { border-right-color: var(--course-experimental) !important; }
+            .day-card ul.recommended-tasks li strong { font-size: 0.8em !important; background-color: #f0f0f0 !important; color: #000 !important; padding: 1px 2px !important; text-align: right !important;}
+            
+            .task-completed label { text-decoration: line-through !important; color: #555 !important; opacity: 1 !important;}
+            .task-completed { background-color: #e9e9e9 !important; box-shadow: none !important;}
+
+            .day-card h5 .emoji { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="page-header-wrapper">
+            <h1>לוח תכנון לימודים - יוני-יולי 2025</h1>
+            <div class="print-button-container">
+                <button class="print-button" onclick="window.print()">🖨️ הדפסי את התוכנית</button>
+            </div>
+        </div>
+
+        <div class="week-tabs">
+            <button class="week-tab active" onclick="showWeek('week1', this)">שבוע 1 (2-8 יוני)</button>
+            <button class="week-tab" onclick="showWeek('week2', this)">שבוע 2 (9-15 יוני)</button>
+            <button class="week-tab" onclick="showWeek('week3', this)">שבוע 3 (16-22 יוני)</button>
+            <button class="week-tab" onclick="showWeek('week4', this)">שבוע 4 (23-29 יוני)</button>
+            <button class="week-tab" onclick="showWeek('week5', this)">שבוע 5 (30 יוני - 6 יולי)</button>
+            <button class="week-tab" onclick="showWeek('week6', this)">שבוע 6 (7-13 יולי)</button>
+        </div>
+        
+        <div id="week1" class="week-content active">
+            <div class="week-header"><h2>שבוע 1: 2 ביוני – 8 ביוני</h2></div>
+            <div class="weekly-overview">
+                <h3>🌟 פוקוס השבוע: התנעה מחדש! יצירת קשר עם כל המרצים, איסוף וארגון חומרי לימוד, והתחלה מבוקרת של השלמת החומר תוך שימת דגש על הקורסים החשובים והקשים לך ביותר.</h3>
+                <p>💡 <strong>טיפ ADHD-י:</strong> השתמשי בטיימר (פומודורו: 25 דק' למידה, 5 דק' הפסקה). התחילי עם "טעימות" קטנות מהחומר כדי להפחית התנגדות. מצא מקום למידה שקט ונטול הסחות דעת.</p>
+                <h4>עוגנים מרכזיים לשבוע:</h4>
+                <ul class="anchors">
+                    <li><strong>שני, 3.6:</strong> נוכחות והשתתפות פעילה בשיעור "פסיכולוגיה חברתית" (שיעור 11: "סטריאוטיפים", פרק 10).</li>
+                    <li><strong>שלישי, 4.6:</strong> נוכחות והשתתפות פעילה בשיעור "דיני תקשורת" (שיעור 9: "דיני התקשורת בהפיכה המשטרית ומלחמת עזה").</li>
+                    <li><strong>כל השבוע:</strong> יצירת קשר ראשוני עם כל המרצים/מתרגלים הרלוונטיים לגבי היעדרות והשלמות. שאלי ספציפית על מאמרי חובה ודגשים למבחנים.</li>
+                    <li><strong>כל השבוע:</strong> התארגנות בקבוצה לפוסטר בקורס "דיני תקשורת" (הגשה ב-18.6).</li>
+                    <li><strong>כל השבוע:</strong> פגישה דחופה (מרצה/מתרגל/צוות) בקורס "מתודולוגיה בפסיכולוגיה ניסויית" להבנת סטטוס והשתלבות.</li>
+                </ul>
+                <h4>בלוקים דינאמיים מומלצים לשבוע:</h4>
+                <p class="dynamic-blocks-note">(משימות אלו גמישות – מומלץ לשבצן בימים א'-ה' לפי הנוחות. ראי הצעות בפירוט היומי תחת 'כדאי')</p>
+                <ul class="dynamic-blocks">
+                    <li class="comm-law"><strong class="dynamic-block-course-name">דיני תקשורת (קורס חשוב!):</strong> השלמת 2 הרצאות ראשונות באופן יסודי (למשל, "עקרונות יסוד בשיטת המשפט הישראלית", "זכויות האדם והזכות לתקשורת") + קריאה מעמיקה של מאמרי החובה/פסקי הדין הקשורים (כ-4-5 שעות).</li>
+                    <li class="social-psych"><strong class="dynamic-block-course-name">פסיכולוגיה חברתית:</strong> השלמת 2-3 הרצאות ראשונות ("מבוא", "העצמי ודימוי עצמי") + קריאת פרקים 1, 3 בספר הקורס. התחלת עבודה על התגובה הראשונה למאמר (אם ידוע – **בררי תאריך הגשה!**) (כ-4-5 שעות).</li>
+                    <li class="qualitative"><strong class="dynamic-block-course-name">שיטות מחקר איכותניות (קורס חשוב!):</strong> עבודה אינטנסיבית (כ-6-7 שעות) על מטלה 2 (הגשה ב-9.6!). במקביל, השלמת 2-3 הרצאות רלוונטיות למטלה (למשל: "מבוא למחקר איכותני", "איסוף טקסטים ארכיוניים", "בניית קטגוריות קידוד"), תוך חשיבה איך ליישם זאת במטלה.</li>
+                    <li class="stats"><strong class="dynamic-block-course-name">הסקה סטטיסטית (קורס קשה לך!):</strong> השלמת 2 הרצאות ראשונות ("התפלגות דגימה", "אמידה נקודתית") תוך דגש על הבנת המושגים לעומק, כולל תרגול R בסיסי על כל נושא (כ-4-5 שעות). התחלת חיפוש שותף/ה לפרויקט R.</li>
+                    <li class="psychopathology"><strong class="dynamic-block-course-name">פסיכופתולוגיה:</strong> השלמת 2 הרצאות ראשונות מסמסטר ב' ("מבוא להפרעות חרדה ופוביות", "הפרעת פניקה + אגורפוביה") + קריאת פרקים רלוונטיים בספר הקורס (כ-3-4 שעות).</li>
+                    <li class="experimental"><strong class="dynamic-block-course-name">מתודולוגיה בפסיכולוגיה ניסויית:</strong> זמן לעיבוד מידע מפגישות, צפייה בהקלטות כלליות אם יש, תיאום עם הצוות והתחלת תרומה פעילה לפרויקט (כ-3-4 שעות).</li>
+                </ul>
+            </div>
+            <div class="daily-breakdown">
+                 <div class="day-card">
+                    <h4>יום ראשון (2.6)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5>
+                    <ul class="mandatory-tasks">
+                        <li><input type="checkbox" id="task-w1-d1-m1" onchange="toggleTaskCompletion('task-w1-d1-m1')"> <label for="task-w1-d1-m1">(אין כרגע עוגנים ליום זה)</label></li>
+                    </ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-qualitative"><input type="checkbox" id="task-w1-d1-r1" onchange="toggleTaskCompletion('task-w1-d1-r1')"> <label for="task-w1-d1-r1"><strong>שיטות מחקר איכותניות:</strong> 2.5-3.5 שעות עבודה ממוקדת על מטלה 2 (הגשה ב-9.6).</label></li>
+                        <li class="task-stats"><input type="checkbox" id="task-w1-d1-r2" onchange="toggleTaskCompletion('task-w1-d1-r2')"> <label for="task-w1-d1-r2"><strong>הסקה סטטיסטית:</strong> 1.5-2 שעות – לימוד הרצאה 1 (התפלגות דגימה). סכמי נקודות מרכזיות.</label></li>
+                        <li><input type="checkbox" id="task-w1-d1-r3" onchange="toggleTaskCompletion('task-w1-d1-r3')"> <label for="task-w1-d1-r3"><strong>ארגון:</strong> שליחת מיילים למרצים/מתרגלים (אם לא נעשה), איסוף וסידור חומרי לימוד.</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5>
+                    <ul class="bonus-tasks">
+                        <li><input type="checkbox" id="task-w1-d1-b1" onchange="toggleTaskCompletion('task-w1-d1-b1')"> <label for="task-w1-d1-b1">קריאה מרפרפת על הסילבוסים של "הסקה סטטיסטית" ו"דיני תקשורת". זיהוי מאמרי חובה מרכזיים.</label></li>
+                    </ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום שני (3.6)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w1-d2-m1" onchange="toggleTaskCompletion('task-w1-d2-m1')"> <label for="task-w1-d2-m1">נוכחות והשתתפות פעילה בשיעור "פסיכולוגיה חברתית" (שיעור 11).</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-social-psych"><input type="checkbox" id="task-w1-d2-r1" onchange="toggleTaskCompletion('task-w1-d2-r1')"> <label for="task-w1-d2-r1"><strong>פסיכולוגיה חברתית:</strong> 45-60 דקות לפני השיעור – חזרה וקריאה מקדימה (פרק 10). 30 דקות אחרי – סיכום נקודות מהשיעור.</label></li>
+                        <li class="task-qualitative"><input type="checkbox" id="task-w1-d2-r2" onchange="toggleTaskCompletion('task-w1-d2-r2')"> <label for="task-w1-d2-r2"><strong>שיטות מחקר איכותניות:</strong> 2-2.5 שעות המשך עבודה על מטלה 2.</label></li>
+                        <li class="task-psychopathology"><input type="checkbox" id="task-w1-d2-r3" onchange="toggleTaskCompletion('task-w1-d2-r3')"> <label for="task-w1-d2-r3"><strong>פסיכופתולוגיה:</strong> 1.5-2 שעות – לימוד הרצאה 1 (סמסטר ב' - מבוא לחרדה ופוביות) + קריאת חלקים רלוונטיים מפרק 6 בספר.</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li><input type="checkbox" id="task-w1-d2-b1" onchange="toggleTaskCompletion('task-w1-d2-b1')"> <label for="task-w1-d2-b1">התחלת קריאת המאמר הראשון הנדרש ב"פסיכולוגיה חברתית" (אם רלוונטי להשלמה).</label></li></ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום שלישי (4.6)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w1-d3-m1" onchange="toggleTaskCompletion('task-w1-d3-m1')"> <label for="task-w1-d3-m1">נוכחות והשתתפות פעילה בשיעור "דיני תקשורת" (שיעור 9).</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-comm-law"><input type="checkbox" id="task-w1-d3-r1" onchange="toggleTaskCompletion('task-w1-d3-r1')"> <label for="task-w1-d3-r1"><strong>דיני תקשורת:</strong> לפני השיעור – חזרה קצרה. אחרי – סיכום קצר של נקודות מרכזיות.</label></li>
+                        <li class="task-qualitative"><input type="checkbox" id="task-w1-d3-r2" onchange="toggleTaskCompletion('task-w1-d3-r2')"> <label for="task-w1-d3-r2"><strong>שיטות מחקר איכותניות:</strong> 1-2 שעות המשך עבודה על מטלה 2.</label></li>
+                        <li class="task-stats"><input type="checkbox" id="task-w1-d3-r3" onchange="toggleTaskCompletion('task-w1-d3-r3')"> <label for="task-w1-d3-r3"><strong>הסקה סטטיסטית:</strong> 1.5-2 שעות – לימוד הרצאה 2 (אמידה נקודתית) + תרגול R בסיסי על הנושא.</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li><input type="checkbox" id="task-w1-d3-b1" onchange="toggleTaskCompletion('task-w1-d3-b1')"> <label for="task-w1-d3-b1">חיפוש שותף/ה לפרויקט R בהסקה סטטיסטית.</label></li></ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום רביעי (5.6)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w1-d4-m1" onchange="toggleTaskCompletion('task-w1-d4-m1')"> <label for="task-w1-d4-m1">(בדקי אם יש תרגולים/מפגשים שנקבעו)</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-comm-law"><input type="checkbox" id="task-w1-d4-r1" onchange="toggleTaskCompletion('task-w1-d4-r1')"> <label for="task-w1-d4-r1"><strong>דיני תקשורת:</strong> 1.5-2 שעות – השלמת הרצאה 1 (עקרונות) + קריאת מאמרי חובה/פסקי דין רלוונטיים.</label></li>
+                        <li class="task-social-psych"><input type="checkbox" id="task-w1-d4-r2" onchange="toggleTaskCompletion('task-w1-d4-r2')"> <label for="task-w1-d4-r2"><strong>פסיכולוגיה חברתית:</strong> 1.5 שעות – השלמת הרצאה 1 (מבוא, פרק 1).</label></li>
+                        <li class="task-experimental"><input type="checkbox" id="task-w1-d4-r3" onchange="toggleTaskCompletion('task-w1-d4-r3')"> <label for="task-w1-d4-r3"><strong>מתודולוגיה:</strong> פגישת צוות/עבודה על הפרויקט.</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li><input type="checkbox" id="task-w1-d4-b1" onchange="toggleTaskCompletion('task-w1-d4-b1')"> <label for="task-w1-d4-b1">קריאת מאמרי הרקע לשיעור 2 ב"דיני תקשורת" (ההכרזות, חוק יסוד).</label></li></ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום חמישי (6.6)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w1-d5-m1" onchange="toggleTaskCompletion('task-w1-d5-m1')"> <label for="task-w1-d5-m1">(בדקי אם יש תרגולים/מפגשים שנקבעו)</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-comm-law"><input type="checkbox" id="task-w1-d5-r1" onchange="toggleTaskCompletion('task-w1-d5-r1')"> <label for="task-w1-d5-r1"><strong>דיני תקשורת:</strong> 1.5-2 שעות – השלמת הרצאה 2 (זכויות האדם) + קריאת מאמרי חובה/פסקי דין רלוונטיים.</label></li>
+                        <li class="task-social-psych"><input type="checkbox" id="task-w1-d5-r2" onchange="toggleTaskCompletion('task-w1-d5-r2')"> <label for="task-w1-d5-r2"><strong>פסיכולוגיה חברתית:</strong> 1.5-2 שעות – השלמת הרצאות 2-3 (העצמי, פרק 3).</label></li>
+                        <li class="task-psychopathology"><input type="checkbox" id="task-w1-d5-r3" onchange="toggleTaskCompletion('task-w1-d5-r3')"> <label for="task-w1-d5-r3"><strong>פסיכופתולוגיה:</strong> 1.5 שעות – השלמת הרצאה 2 (סמסטר ב' - פניקה ואגורפוביה).</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li><input type="checkbox" id="task-w1-d5-b1" onchange="toggleTaskCompletion('task-w1-d5-b1')"> <label for="task-w1-d5-b1">תרגול נוסף ב-R (הסקה סטטיסטית) על הנושאים שנלמדו.</label></li></ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="week2" class="week-content">
+             <div class="week-header"><h2>שבוע 2: 9 ביוני – 15 ביוני</h2></div>
+            <div class="weekly-overview">
+                <h3>🌟 פוקוס השבוע: עמידה ביעד הגשה חשוב (שיטות איכותניות), התקדמות משמעותית בהשלמות ובמטלות השוטפות, ובניית מומנטום.</h3>
+                <p>💡 <strong>טיפ ADHD-י:</strong> השתמשי בצבעים! מרקרים, עטים צבעוניים לסיכומים, פתקיות צבעוניות. זה עוזר להבחין בין נושאים, לשמור על עניין, ולעורר את הזיכרון הוויזואלי.</p>
+                <h4>📍 עוגנים מרכזיים לשבוע:</h4>
+                <ul class="anchors">
+                    <li><strong>שני, 9.6:</strong> ❗ **הגשת מטלה 2 בקורס "שיטות מחקר איכותניות בתקשורת"**.</li>
+                    <li><strong>שני, 9.6:</strong> נוכחות והשתתפות פעילה בשיעור "שיטות מחקר איכותניות" (שיעור 13: "סדנת ניתוח תוכן איכותני תמטי").</li>
+                    <li><strong>שלישי, 10.6:</strong> נוכחות והשתתפות פעילה בשיעור "פסיכולוגיה חברתית" (שיעור 12: "תוקפנות", פרק 13).</li>
+                    <li><strong>רביעי, 11.6:</strong> נוכחות והשתתפות פעילה בשיעור "דיני תקשורת" (שיעור 10: "אסדרת המדיה החדשים, מידע מוטעה ומטעה - הרצאת אורח").</li>
+                </ul>
+                <h4>🧱 בלוקים דינאמיים מומלצים לשבוע:</h4>
+                <p class="dynamic-blocks-note">(משימות אלו גמישות – מומלץ לשבצן בימים א'-ה' לפי הנוחות. ראי הצעות בפירוט היומי תחת 'כדאי')</p>
+                <ul class="dynamic-blocks">
+                    <li class="comm-law"><strong class="dynamic-block-course-name">דיני תקשורת (חשוב!):</strong> השלמת 2 הרצאות נוספות (למשל, "הזכות לתקשורת: חופש הביטוי", "מגבלות על הזכות לתקשורת") + קריאת מאמרים/פסקי דין. עבודה אינטנסיבית על הפוסטר (לקראת 18.6) (כ-4-5 שעות).</li>
+                    <li class="social-psych"><strong class="dynamic-block-course-name">פסיכולוגיה חברתית:</strong> השלמת 2 הרצאות נוספות ("הבנת האחר - ייחוסים", "קוגניציה חברתית - שיפוטים", פרק 4). עבודה ממוקדת על התגובה השנייה למאמר (או השלמת הראשונה. לקראת הגשה שלישית ב-16.6) (כ-4-5 שעות).</li>
+                    <li class="qualitative"><strong class="dynamic-block-course-name">שיטות מחקר איכותניות (חשוב!):</strong> (לאחר הגשת מטלה 2) השלמת 2 הרצאות נוספות (למשל, "אתנוגרפיה - תצפית", "אתנוגרפיה וירטואלית"), התחלת קריאה וחשיבה לקראת המטלה הסופית (כ-3-4 שעות).</li>
+                    <li class="stats"><strong class="dynamic-block-course-name">הסקה סטטיסטית (מאתגר!):</strong> השלמת 2 הרצאות נוספות ("רווח סמך לתוחלת האוכלוסיה...", "רווח סמך לפרופורציה") + תרגול R אינטנסיבי. תחילת עבודה על פרויקט ה-R עם שותף/ה (כ-4-6 שעות).</li>
+                    <li class="psychopathology"><strong class="dynamic-block-course-name">פסיכופתולוגיה:</strong> השלמת 2 הרצאות נוספות מסמסטר ב' ("חרדה חברתית", "הפרעת דחק פוסט-טראומטי (PTSD)") + קריאה (כ-3-4 שעות).</li>
+                    <li class="experimental"><strong class="dynamic-block-course-name">מתודולוגיה בפסיכולוגיה ניסויית:</strong> עבודה שוטפת על הפרויקט הקבוצתי בהתאם להנחיות (כ-3-4 שעות).</li>
+                </ul>
+            </div>
+            <div class="daily-breakdown">
+                 <div class="day-card">
+                    <h4>יום ראשון (9.6)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5>
+                    <ul class="mandatory-tasks">
+                        <li><input type="checkbox" id="task-w2-d1-m1" onchange="toggleTaskCompletion('task-w2-d1-m1')"> <label for="task-w2-d1-m1">**הגשת מטלה 2 ב"שיטות מחקר איכותניות"!!!**</label></li>
+                        <li><input type="checkbox" id="task-w2-d1-m2" onchange="toggleTaskCompletion('task-w2-d1-m2')"> <label for="task-w2-d1-m2">נוכחות והשתתפות פעילה בשיעור "שיטות מחקר איכותניות" (שיעור 13).</label></li>
+                    </ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-comm-law"><input type="checkbox" id="task-w2-d1-r1" onchange="toggleTaskCompletion('task-w2-d1-r1')"> <label for="task-w2-d1-r1"><strong>דיני תקשורת:</strong> 1.5 שעות – השלמת הרצאה 3 ("הזכות לתקשורת: חופש הביטוי").</label></li>
+                        <li class="task-social-psych"><input type="checkbox" id="task-w2-d1-r2" onchange="toggleTaskCompletion('task-w2-d1-r2')"> <label for="task-w2-d1-r2"><strong>פסיכולוגיה חברתית:</strong> התחלת עבודה על תגובה למאמר 3 (קריאה ראשונית, נקודות עיקריות).</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5>
+                    <ul class="bonus-tasks">
+                        <li><input type="checkbox" id="task-w2-d1-b1" onchange="toggleTaskCompletion('task-w2-d1-b1')"> <label for="task-w2-d1-b1">חגיגת הגשת המטלה! מגיע לך משהו קטן וכיפי.</label></li>
+                    </ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום שני (10.6)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w2-d2-m1" onchange="toggleTaskCompletion('task-w2-d2-m1')"> <label for="task-w2-d2-m1">נוכחות והשתתפות פעילה בשיעור "פסיכולוגיה חברתית" (שיעור 12).</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-social-psych"><input type="checkbox" id="task-w2-d2-r1" onchange="toggleTaskCompletion('task-w2-d2-r1')"> <label for="task-w2-d2-r1"><strong>פסיכולוגיה חברתית:</strong> 1.5 שעות – השלמת הרצאה 4 ("הבנת האחר - ייחוסים", פרק 4).</label></li>
+                        <li class="task-stats"><input type="checkbox" id="task-w2-d2-r2" onchange="toggleTaskCompletion('task-w2-d2-r2')"> <label for="task-w2-d2-r2"><strong>הסקה סטטיסטית:</strong> 1.5 שעות – השלמת הרצאה 3 ("רווח סמך לתוחלת האוכלוסיה...").</label></li>
+                        <li class="task-comm-law"><input type="checkbox" id="task-w2-d2-r3" onchange="toggleTaskCompletion('task-w2-d2-r3')"> <label for="task-w2-d2-r3"><strong>דיני תקשורת:</strong> עבודה על הפוסטר (שעה).</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li><input type="checkbox" id="task-w2-d2-b1" onchange="toggleTaskCompletion('task-w2-d2-b1')"> <label for="task-w2-d2-b1">תרגול R על רווחי סמך (הסקה סטטיסטית).</label></li></ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום שלישי (11.6)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w2-d3-m1" onchange="toggleTaskCompletion('task-w2-d3-m1')"> <label for="task-w2-d3-m1">נוכחות והשתתפות פעילה בשיעור "דיני תקשורת" (שיעור 10).</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-comm-law"><input type="checkbox" id="task-w2-d3-r1" onchange="toggleTaskCompletion('task-w2-d3-r1')"> <label for="task-w2-d3-r1"><strong>דיני תקשורת:</strong> המשך עבודה על הפוסטר (1.5 שעות).</label></li>
+                        <li class="task-psychopathology"><input type="checkbox" id="task-w2-d3-r2" onchange="toggleTaskCompletion('task-w2-d3-r2')"> <label for="task-w2-d3-r2"><strong>פסיכופתולוגיה:</strong> 1.5 שעות – השלמת הרצאה 3 (חרדה חברתית).</label></li>
+                        <li class="task-stats"><input type="checkbox" id="task-w2-d3-r3" onchange="toggleTaskCompletion('task-w2-d3-r3')"> <label for="task-w2-d3-r3"><strong>הסקה סטטיסטית:</strong> תחילת עבודה על פרויקט R עם שותף/ה (שעה).</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li class="task-qualitative"><input type="checkbox" id="task-w2-d3-b1" onchange="toggleTaskCompletion('task-w2-d3-b1')"> <label for="task-w2-d3-b1"><strong>שיטות מחקר איכותניות:</strong> השלמת הרצאה שהוחמצה (למשל, אתנוגרפיה).</label></li></ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום רביעי (12.6)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w2-d4-m1" onchange="toggleTaskCompletion('task-w2-d4-m1')"> <label for="task-w2-d4-m1">(בדקי אם יש תרגולים/מפגשים שנקבעו)</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-comm-law"><input type="checkbox" id="task-w2-d4-r1" onchange="toggleTaskCompletion('task-w2-d4-r1')"> <label for="task-w2-d4-r1"><strong>דיני תקשורת:</strong> 1.5 שעות – השלמת הרצאה 4 ("מגבלות על הזכות לתקשר").</label></li>
+                        <li class="task-social-psych"><input type="checkbox" id="task-w2-d4-r2" onchange="toggleTaskCompletion('task-w2-d4-r2')"> <label for="task-w2-d4-r2"><strong>פסיכולוגיה חברתית:</strong> 1.5 שעות – השלמת הרצאה 5 ("קוגניציה חברתית - שיפוטים", פרק 4). המשך עבודה על תגובה למאמר.</label></li>
+                        <li class="task-experimental"><input type="checkbox" id="task-w2-d4-r3" onchange="toggleTaskCompletion('task-w2-d4-r3')"> <label for="task-w2-d4-r3"><strong>מתודולוגיה:</strong> עבודה על הפרויקט עם הצוות (1.5-2 שעות).</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li><input type="checkbox" id="task-w2-d4-b1" onchange="toggleTaskCompletion('task-w2-d4-b1')"> <label for="task-w2-d4-b1">קריאת מאמרים מרשימת הקריאה ב"דיני תקשורת" הרלוונטיים להרצאות שהושלמו.</label></li></ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום חמישי (13.6)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w2-d5-m1" onchange="toggleTaskCompletion('task-w2-d5-m1')"> <label for="task-w2-d5-m1">(בדקי אם יש תרגולים/מפגשים שנקבעו)</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-stats"><input type="checkbox" id="task-w2-d5-r1" onchange="toggleTaskCompletion('task-w2-d5-r1')"> <label for="task-w2-d5-r1"><strong>הסקה סטטיסטית:</strong> 1.5-2 שעות – השלמת הרצאה 4 ("רווח סמך לפרופורציה") + תרגול R.</label></li>
+                        <li class="task-psychopathology"><input type="checkbox" id="task-w2-d5-r2" onchange="toggleTaskCompletion('task-w2-d5-r2')"> <label for="task-w2-d5-r2"><strong>פסיכופתולוגיה:</strong> 1.5 שעות – השלמת הרצאה 4 (PTSD).</label></li>
+                        <li class="task-qualitative"><input type="checkbox" id="task-w2-d5-r3" onchange="toggleTaskCompletion('task-w2-d5-r3')"> <label for="task-w2-d5-r3"><strong>שיטות מחקר איכותניות:</strong> השלמת הרצאה שהוחמצה (למשל, ראיונות) (1.5 שעות).</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li><input type="checkbox" id="task-w2-d5-b1" onchange="toggleTaskCompletion('task-w2-d5-b1')"> <label for="task-w2-d5-b1">חזרה על חומר משבוע שעבר בקורס שאת מרגישה בו פחות בטוחה.</label></li></ul>
+                </div>
+            </div>
+        </div>
+        <div id="week3" class="week-content">
+            <div class="week-header"><h2>שבוע 3: 16 ביוני – 22 ביוני</h2></div>
+            <div class="weekly-overview">
+                <h3>🌟 פוקוס השבוע: עמידה ביעדי הגשה נוספים (תגובה למאמר בפסיכולוגיה חברתית, פוסטר בדיני תקשורת) והתקדמות משמעותית בהשלמת החומר, תוך התחלת חשיבה על ארגון החומר לקראת המבחנים.</h3>
+                <p>💡 <strong>טיפ ADHD-י:</strong> "למדי" את החומר. הסבירי את המושגים בקול רם לעצמך, לחבר/ה, או אפילו לבובת פרווה. פעולת ההסבר עוזרת לעבד ולהטמיע את המידע.</p>
+                <h4>📍 עוגנים מרכזיים לשבוע:</h4>
+                <ul class="anchors">
+                    <li><strong>שני, 16.6 (עד 20:00):</strong> ❗ **הגשת תגובה למאמר שלישי בקורס "פסיכולוגיה חברתית"** (המאמר של Seetahul & Gretemeyer, בהתאם למועד השיעור בנושא "אלטרואיזם, מוסריות").</li>
+                    <li><strong>שני, 16.6:</strong> נוכחות והשתתפות פעילה בשיעור "שיטות מחקר איכותניות" (שיעור 14: "סדנת ניתוח איכותני תמטי - שימוש באטלס").</li>
+                    <li><strong>שלישי, 17.6:</strong> נוכחות והשתתפות פעילה בשיעור "פסיכולוגיה חברתית" (שיעור 13: "אלטרואיזם, מוסריות", פרק 14).</li>
+                    <li><strong>רביעי, 18.6:</strong> ❗ **הגשת/הצגת הפוסטר בקורס "דיני תקשורת"** (09:00–10:00, בשיעור 11).</li>
+                </ul>
+                <h4>🧱 בלוקים דינאמיים מומלצים לשבוע:</h4>
+                <p class="dynamic-blocks-note">(משימות אלו גמישות – מומלץ לשבצן בימים א'-ה' לפי הנוחות. ראי הצעות בפירוט היומי תחת 'כדאי')</p>
+                <ul class="dynamic-blocks">
+                    <li class="comm-law"><strong class="dynamic-block-course-name">דיני תקשורת (חשוב!):</strong> השלמת 2 הרצאות נוספות (למשל, "האיומים על החופש לתקשר: צנזורה", "אסדרת הזכות לתקשר דעות ועמדות: טוהר ההליך השיפוטי, טוהר הבחירות") + קריאת חומר רלוונטי. הכנות אחרונות לפוסטר (כ-4-5 שעות).</li>
+                    <li class="social-psych"><strong class="dynamic-block-course-name">פסיכולוגיה חברתית:</strong> השלמת 2 הרצאות נוספות ("עמדות" פרק 6, "שכנוע" פרק 7). סיום והגשת התגובה למאמר (כ-4-5 שעות).</li>
+                    <li class="qualitative"><strong class="dynamic-block-course-name">שיטות מחקר איכותניות (חשוב!):** השלמת 2 הרצאות נוספות (למשל, "כללי אתיקה ומחקר פתוח במחקר איכותני", "ניתוח איכותני תמטי"). התחלת חשיבה ותכנון מעמיק למטלה הסופית (ביצוע מחקר אמפירי) (כ-4-5 שעות).</li>
+                    <li class="stats"><strong class="dynamic-block-course-name">הסקה סטטיסטית (מאתגר!):** השלמת 2 הרצאות נוספות ("רווח סמך להפרש תוחלות", "בדיקת השערות" – מושגי יסוד) + תרגול R. המשך עבודה משמעותית על פרויקט ה-R עם שותף/ה (כ-5-6 שעות).</li>
+                    <li class="psychopathology"><strong class="dynamic-block-course-name">פסיכופתולוגיה:</strong> השלמת 2 הרצאות נוספות מסמסטר ב' ("הפרעה טורדנית-כפייתית (OCD)", "הפרעות אכילה") + קריאת פרקים רלוונטיים (המשך פרק 7, פרק 11) (כ-3-4 שעות).</li>
+                    <li class="experimental"><strong class="dynamic-block-course-name">מתודולוגיה בפסיכולוגיה ניסויית:</strong> עבודה אינטנסיבית על בניית/הרצת הניסוי, איסוף נתונים, בהתאם לשלב הפרויקט (כ-4-5 שעות).</li>
+                </ul>
+            </div>
+            <div class="daily-breakdown">
+                <div class="day-card">
+                    <h4>יום ראשון (16.6)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5>
+                    <ul class="mandatory-tasks">
+                        <li><input type="checkbox" id="task-w3-d1-m1" onchange="toggleTaskCompletion('task-w3-d1-m1')"> <label for="task-w3-d1-m1">**הגשת תגובה למאמר 3 ב"פסיכולוגיה חברתית" (עד 20:00)!**</label></li>
+                        <li><input type="checkbox" id="task-w3-d1-m2" onchange="toggleTaskCompletion('task-w3-d1-m2')"> <label for="task-w3-d1-m2">נוכחות והשתתפות פעילה בשיעור "שיטות מחקר איכותניות" (שיעור 14).</label></li>
+                    </ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-comm-law"><input type="checkbox" id="task-w3-d1-r1" onchange="toggleTaskCompletion('task-w3-d1-r1')"> <label for="task-w3-d1-r1"><strong>דיני תקשורת:</strong> 1.5 שעות – השלמת הרצאה 5 ("האיומים על החופש לתקשר: צנזורה").</label></li>
+                        <li class="task-stats"><input type="checkbox" id="task-w3-d1-r2" onchange="toggleTaskCompletion('task-w3-d1-r2')"> <label for="task-w3-d1-r2"><strong>הסקה סטטיסטית:</strong> 1.5 שעות – השלמת הרצאה 5 ("רווח סמך להפרש תוחלות").</label></li>
+                        <li class="task-social-psych"><input type="checkbox" id="task-w3-d1-r3" onchange="toggleTaskCompletion('task-w3-d1-r3')"> <label for="task-w3-d1-r3"><strong>פסיכולוגיה חברתית:</strong> סיום אחרון של התגובה למאמר והגשה.</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li><input type="checkbox" id="task-w3-d1-b1" onchange="toggleTaskCompletion('task-w3-d1-b1')"> <label for="task-w3-d1-b1">קריאת פרק 6 ("עמדות") ב"פסיכולוגיה חברתית" לקראת השלמת ההרצאה.</label></li></ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום שני (17.6)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w3-d2-m1" onchange="toggleTaskCompletion('task-w3-d2-m1')"> <label for="task-w3-d2-m1">נוכחות והשתתפות פעילה בשיעור "פסיכולוגיה חברתית" (שיעור 13).</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-social-psych"><input type="checkbox" id="task-w3-d2-r1" onchange="toggleTaskCompletion('task-w3-d2-r1')"> <label for="task-w3-d2-r1"><strong>פסיכולוגיה חברתית:</strong> 1.5 שעות – השלמת הרצאה 6 ("עמדות", פרק 6).</label></li>
+                        <li class="task-psychopathology"><input type="checkbox" id="task-w3-d2-r2" onchange="toggleTaskCompletion('task-w3-d2-r2')"> <label for="task-w3-d2-r2"><strong>פסיכופתולוגיה:</strong> 1.5 שעות – השלמת הרצאה 5 (OCD).</label></li>
+                        <li class="task-comm-law"><input type="checkbox" id="task-w3-d2-r3" onchange="toggleTaskCompletion('task-w3-d2-r3')"> <label for="task-w3-d2-r3"><strong>דיני תקשורת:</strong> עבודה על הפוסטר (שעה).</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li><input type="checkbox" id="task-w3-d2-b1" onchange="toggleTaskCompletion('task-w3-d2-b1')"> <label for="task-w3-d2-b1">תרגול R על רווחי סמך להפרש תוחלות (הסקה סטטיסטית).</label></li></ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום שלישי (18.6)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w3-d3-m1" onchange="toggleTaskCompletion('task-w3-d3-m1')"> <label for="task-w3-d3-m1">**הגשת/הצגת הפוסטר ב"דיני תקשורת"** (שיעור 11).</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-comm-law"><input type="checkbox" id="task-w3-d3-r1" onchange="toggleTaskCompletion('task-w3-d3-r1')"> <label for="task-w3-d3-r1"><strong>דיני תקשורת:</strong> הכנות אחרונות לפוסטר והצגה.</label></li>
+                        <li class="task-qualitative"><input type="checkbox" id="task-w3-d3-r2" onchange="toggleTaskCompletion('task-w3-d3-r2')"> <label for="task-w3-d3-r2"><strong>שיטות מחקר איכותניות:</strong> 1.5 שעות – השלמת הרצאה (למשל, "כללי אתיקה").</label></li>
+                        <li class="task-stats"><input type="checkbox" id="task-w3-d3-r3" onchange="toggleTaskCompletion('task-w3-d3-r3')"> <label for="task-w3-d3-r3"><strong>הסקה סטטיסטית:</strong> עבודה על פרויקט R (שעתיים).</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li class="task-experimental"><input type="checkbox" id="task-w3-d3-b1" onchange="toggleTaskCompletion('task-w3-d3-b1')"> <label for="task-w3-d3-b1"><strong>מתודולוגיה:</strong> עבודה אינטנסיבית על הפרויקט (בניית/הרצת ניסוי).</label></li></ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום רביעי (19.6)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w3-d4-m1" onchange="toggleTaskCompletion('task-w3-d4-m1')"> <label for="task-w3-d4-m1">(בדקי אם יש תרגולים/מפגשים שנקבעו)</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-comm-law"><input type="checkbox" id="task-w3-d4-r1" onchange="toggleTaskCompletion('task-w3-d4-r1')"> <label for="task-w3-d4-r1"><strong>דיני תקשורת:</strong> 1.5 שעות – השלמת הרצאה 6 ("אסדרת הזכות לתקשר דעות ועמדות").</label></li>
+                        <li class="task-social-psych"><input type="checkbox" id="task-w3-d4-r2" onchange="toggleTaskCompletion('task-w3-d4-r2')"> <label for="task-w3-d4-r2"><strong>פסיכולוגיה חברתית:</strong> 1.5 שעות – השלמת הרצאה 7 ("שכנוע", פרק 7).</label></li>
+                        <li class="task-stats"><input type="checkbox" id="task-w3-d4-r3" onchange="toggleTaskCompletion('task-w3-d4-r3')"> <label for="task-w3-d4-r3"><strong>הסקה סטטיסטית:</strong> 1.5-2 שעות – השלמת הרצאה 6 ("בדיקת השערות" – מושגי יסוד) + תרגול R.</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li><input type="checkbox" id="task-w3-d4-b1" onchange="toggleTaskCompletion('task-w3-d4-b1')"> <label for="task-w3-d4-b1">התחלת חשיבה ותכנון ראשוני למטלה הסופית ב"שיטות מחקר איכותניות".</label></li></ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום חמישי (20.6)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w3-d5-m1" onchange="toggleTaskCompletion('task-w3-d5-m1')"> <label for="task-w3-d5-m1">(בדקי אם יש תרגולים/מפגשים שנקבעו)</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-psychopathology"><input type="checkbox" id="task-w3-d5-r1" onchange="toggleTaskCompletion('task-w3-d5-r1')"> <label for="task-w3-d5-r1"><strong>פסיכופתולוגיה:</strong> 1.5 שעות – השלמת הרצאה 6 (הפרעות אכילה).</label></li>
+                        <li class="task-qualitative"><input type="checkbox" id="task-w3-d5-r2" onchange="toggleTaskCompletion('task-w3-d5-r2')"> <label for="task-w3-d5-r2"><strong>שיטות מחקר איכותניות:</strong> 1.5 שעות – השלמת הרצאה (למשל, "ניתוח איכותני תמטי").</label></li>
+                        <li class="task-experimental"><input type="checkbox" id="task-w3-d5-r3" onchange="toggleTaskCompletion('task-w3-d5-r3')"> <label for="task-w3-d5-r3"><strong>מתודולוגיה:</strong> המשך עבודה על הפרויקט (איסוף נתונים/ניתוח ראשוני).</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li><input type="checkbox" id="task-w3-d5-b1" onchange="toggleTaskCompletion('task-w3-d5-b1')"> <label for="task-w3-d5-b1">קריאה נוספת של מאמרים חשובים בדיני תקשורת לקראת המבחן.</label></li></ul>
+                </div>
+            </div>
+        </div>
+        <div id="week4" class="week-content">
+            <div class="week-header"><h2>שבוע 4: 23 ביוני – 29 ביוני</h2></div>
+            <div class="weekly-overview">
+                <h3>🌟 פוקוס השבוע: התחלת חזרה אינטנסיבית למבחן בפסיכולוגיה חברתית (1.7), סיום השלמת רוב החומר בקורסים האחרים, והמשך עבודה על פרויקטים גדולים.</h3>
+                <p>💡 <strong>טיפ ADHD-י:</strong> צרי "דף נוסחאות" או "דף רמאות" (חוקי, כמובן!) לכל קורס, במיוחד לזה עם חומר פתוח. רישום נקודות מרכזיות, מושגים, מספרי סעיפים חשובים (בדיני תקשורת) יעזור להתמצאות מהירה ויפחית לחץ.</p>
+                <h4>📍 עוגנים מרכזיים לשבוע:</h4>
+                <ul class="anchors">
+                    <li><strong>שני, 23.6:</strong> נוכחות והשתתפות פעילה בשיעור "שיטות מחקר איכותניות" (שיעור 15: "סיכום וחזרה").</li>
+                    <li><strong>שלישי, 24.6:</strong> נוכחות והשתתפות פעילה בשיעור "פסיכולוגיה חברתית" (שיעור 14: "משיכה בין אישית", פרק 9).</li>
+                    <li><strong>רביעי, 25.6:</strong> נוכחות והשתתפות פעילה בשיעור "דיני תקשורת" (שיעור 12: "שיעור הכנה למבחן").</li>
+                </ul>
+                <h4>🧱 בלוקים דינאמיים מומלצים לשבוע:</h4>
+                <p class="dynamic-blocks-note">(משימות אלו גמישות – מומלץ לשבצן בימים א'-ה' לפי הנוחות. ראי הצעות בפירוט היומי תחת 'כדאי')</p>
+                <ul class="dynamic-blocks">
+                    <li class="social-psych"><strong class="dynamic-block-course-name">פסיכולוגיה חברתית (מבחן בקרוב!):</strong> השלמת 2-3 הרצאות אחרונות ("קונפורמיות, ציות והיענות" פרק 8, "תרגיל - קונפורמיות וקבוצות", "קבוצות" פרק 12). **התחלת חזרה אינטנסיבית ומאורגנת על כל החומר למבחן (1.7)!** (כ-7-9 שעות).</li>
+                    <li class="comm-law"><strong class="dynamic-block-course-name">דיני תקשורת (חשוב!):** השלמת 2 הרצאות אחרונות (למשל, "אסדרת הזכות לתקשר באמצעות טכנולוגיה", "השיח המסחרי"). לאחר שיעור ההכנה למבחן, התחלת ארגון החומר הפתוח בצורה יעילה (יצירת אינדקס, סימון מקורות חשובים) (כ-5-6 שעות).</li>
+                    <li class="stats"><strong class="dynamic-block-course-name">הסקה סטטיסטית (מאתגר!):** השלמת 2 הרצאות אחרונות ("טעויות החלטה, עוצמת מבחן, גודל אפקט", "בדיקת הנחות המבחן הסטטיסטי", "מבחן מובהקות למתאם פירסון"). עבודה אינטנסיבית על פרויקט ה-R, כולל שימוש ב-JASP ו-G\*Power (כ-5-7 שעות).</li>
+                    <li class="qualitative"><strong class="dynamic-block-course-name">שיטות מחקר איכותניות (חשוב!):** עבודה משמעותית על המטלה הסופית (ביצוע מחקר אמפירי) (כ-4-5 שעות).</li>
+                    <li class="psychopathology"><strong class="dynamic-block-course-name">פסיכופתולוגיה:</strong> השלמת 2 הרצאות אחרונות מסמסטר ב' ("סכיזופרניה + דיסוציאציה"). התחלת חזרה וסיכום החומר לקראת המבחן (כ-3-4 שעות).</li>
+                    <li class="experimental"><strong class="dynamic-block-course-name">מתודולוגיה בפסיכולוגיה ניסויית:</strong> סיכום התנסויות, בירור לגבי "עבודה ב'" (60% מהציון), השלמת חובות אחרונים (כגון השתתפות כנבדקים בניסויים) (כ-3-4 שעות).</li>
+                </ul>
+            </div>
+            <div class="daily-breakdown">
+                 <div class="day-card">
+                    <h4>יום ראשון (23.6)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w4-d1-m1" onchange="toggleTaskCompletion('task-w4-d1-m1')"> <label for="task-w4-d1-m1">נוכחות והשתתפות פעילה בשיעור "שיטות מחקר איכותניות" (שיעור 15).</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-social-psych"><input type="checkbox" id="task-w4-d1-r1" onchange="toggleTaskCompletion('task-w4-d1-r1')"> <label for="task-w4-d1-r1"><strong>פסיכולוגיה חברתית:</strong> 2 שעות – השלמת הרצאה 8 ("קונפורמיות", פרק 8) + התחלת חזרה למבחן.</label></li>
+                        <li class="task-comm-law"><input type="checkbox" id="task-w4-d1-r2" onchange="toggleTaskCompletion('task-w4-d1-r2')"> <label for="task-w4-d1-r2"><strong>דיני תקשורת:</strong> 1.5 שעות – השלמת הרצאה 7 ("אסדרת הזכות לתקשר באמצעות טכנולוגיה").</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li class="task-stats"><input type="checkbox" id="task-w4-d1-b1" onchange="toggleTaskCompletion('task-w4-d1-b1')"> <label for="task-w4-d1-b1"><strong>הסקה סטטיסטית:</strong> השלמת הרצאה 7 ("טעויות החלטה, עוצמת מבחן, גודל אפקט").</label></li></ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום שני (24.6)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w4-d2-m1" onchange="toggleTaskCompletion('task-w4-d2-m1')"> <label for="task-w4-d2-m1">נוכחות והשתתפות פעילה בשיעור "פסיכולוגיה חברתית" (שיעור 14).</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-social-psych"><input type="checkbox" id="task-w4-d2-r1" onchange="toggleTaskCompletion('task-w4-d2-r1')"> <label for="task-w4-d2-r1"><strong>פסיכולוגיה חברתית:</strong> 2-3 שעות – המשך חזרה אינטנסיבית למבחן.</label></li>
+                        <li class="task-psychopathology"><input type="checkbox" id="task-w4-d2-r2" onchange="toggleTaskCompletion('task-w4-d2-r2')"> <label for="task-w4-d2-r2"><strong>פסיכופתולוגיה:</strong> 1.5 שעות – השלמת הרצאה 7 (סמסטר ב' - סכיזופרניה).</label></li>
+                        <li class="task-stats"><input type="checkbox" id="task-w4-d2-r3" onchange="toggleTaskCompletion('task-w4-d2-r3')"> <label for="task-w4-d2-r3"><strong>הסקה סטטיסטית:</strong> עבודה על פרויקט R (שעה).</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li class="task-stats"><input type="checkbox" id="task-w4-d2-b1" onchange="toggleTaskCompletion('task-w4-d2-b1')"> <label for="task-w4-d2-b1">תרגול R מקיף (הסקה סטטיסטית).</label></li></ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום שלישי (25.6)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w4-d3-m1" onchange="toggleTaskCompletion('task-w4-d3-m1')"> <label for="task-w4-d3-m1">נוכחות והשתתפות פעילה בשיעור "דיני תקשורת" (שיעור 12 - הכנה למבחן).</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-comm-law"><input type="checkbox" id="task-w4-d3-r1" onchange="toggleTaskCompletion('task-w4-d3-r1')"> <label for="task-w4-d3-r1"><strong>דיני תקשורת:</strong> 2 שעות – חזרה למבחן בעקבות שיעור ההכנה וארגון החומר הפתוח.</label></li>
+                        <li class="task-social-psych"><input type="checkbox" id="task-w4-d3-r2" onchange="toggleTaskCompletion('task-w4-d3-r2')"> <label for="task-w4-d3-r2"><strong>פסיכולוגיה חברתית:</strong> 2 שעות – המשך חזרה למבחן.</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li class="task-qualitative"><input type="checkbox" id="task-w4-d3-b1" onchange="toggleTaskCompletion('task-w4-d3-b1')"> <label for="task-w4-d3-b1"><strong>שיטות מחקר איכותניות:</strong> עבודה על המטלה הסופית.</label></li></ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום רביעי (26.6)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w4-d4-m1" onchange="toggleTaskCompletion('task-w4-d4-m1')"> <label for="task-w4-d4-m1">(בדקי אם יש תרגולים/מפגשים שנקבעו)</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-comm-law"><input type="checkbox" id="task-w4-d4-r1" onchange="toggleTaskCompletion('task-w4-d4-r1')"> <label for="task-w4-d4-r1"><strong>דיני תקשורת:</strong> 2 שעות – השלמת הרצאה 8 ("השיח המסחרי"), סיום ארגון החומר הפתוח.</label></li>
+                        <li class="task-social-psych"><input type="checkbox" id="task-w4-d4-r2" onchange="toggleTaskCompletion('task-w4-d4-r2')"> <label for="task-w4-d4-r2"><strong>פסיכולוגיה חברתית:</strong> 2 שעות – השלמת הרצאות 9-10 ("תרגיל - קונפורמיות וקבוצות", "קבוצות" פרק 12). חזרה למבחן.</label></li>
+                        <li class="task-stats"><input type="checkbox" id="task-w4-d4-r3" onchange="toggleTaskCompletion('task-w4-d4-r3')"> <label for="task-w4-d4-r3"><strong>הסקה סטטיסטית:</strong> עבודה על פרויקט R (שעתיים).</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li><input type="checkbox" id="task-w4-d4-b1" onchange="toggleTaskCompletion('task-w4-d4-b1')"> <label for="task-w4-d4-b1"><strong>הסקה סטטיסטית:</strong> השלמת הרצאה 8 ("מבחן מובהקות למתאם פירסון") + תרגול R.</label></li></ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום חמישי (27.6)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w4-d5-m1" onchange="toggleTaskCompletion('task-w4-d5-m1')"> <label for="task-w4-d5-m1">(בדקי אם יש תרגולים/מפגשים שנקבעו)</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-social-psych"><input type="checkbox" id="task-w4-d5-r1" onchange="toggleTaskCompletion('task-w4-d5-r1')"> <label for="task-w4-d5-r1"><strong>פסיכולוגיה חברתית:</strong> 3-4 שעות – יום חזרה מרוכז ואחרון (כמעט) למבחן!</label></li>
+                        <li class="task-psychopathology"><input type="checkbox" id="task-w4-d5-r2" onchange="toggleTaskCompletion('task-w4-d5-r2')"> <label for="task-w4-d5-r2"><strong>פסיכופתולוגיה:</strong> 1.5 שעות – השלמת הרצאה 8 (סמסטר ב' - דיסוציאציה). התחלת חזרה למבחן.</label></li>
+                        <li class="task-experimental"><input type="checkbox" id="task-w4-d5-r3" onchange="toggleTaskCompletion('task-w4-d5-r3')"> <label for="task-w4-d5-r3"><strong>מתודולוגיה:</strong> סיכום התנסויות, בירור לגבי עבודה ב'.</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li><input type="checkbox" id="task-w4-d5-b1" onchange="toggleTaskCompletion('task-w4-d5-b1')"> <label for="task-w4-d5-b1"><strong>הסקה סטטיסטית:</strong> עבודה על פרויקט R – סגירת קצוות.</label></li></ul>
+                </div>
+            </div>
+        </div>
+        <div id="week5" class="week-content">
+            <div class="week-header"><h2>שבוע 5: 30 ביוני – 6 ביולי</h2></div>
+            <div class="weekly-overview">
+                <h3>🌟 פוקוס השבוע: ישורת אחרונה למבחן בפסיכולוגיה חברתית (1.7)! התקדמות בהסקה סטטיסטית ושיטות איכותניות.</h3>
+                <p>💡 <strong>טיפ ADHD-י:</strong> בצעי "ריצות קצרות" של למידה ממוקדת (פומודורו) עם הפסקות קצרות. זה עוזר לשמור על ריכוז כשמתכוננים למבחן.</p>
+                <h4>📍 עוגנים מרכזיים לשבוע:</h4>
+                <ul class="anchors">
+                    <li><strong>שלישי, 1.7:</strong> ❗❗ **מבחן מסכם בפסיכולוגיה חברתית!**</li>
+                    <li><strong>כל השבוע:</strong> עבודה אינטנסיבית על פרויקט ה-R ב"הסקה סטטיסטית" (**לברר תאריך הגשה!**).</li>
+                    <li><strong>כל השבוע:</strong> המשך עבודה על המטלה הסופית ב"שיטות מחקר איכותניות" (הגשה 31.7).</li>
+                </ul>
+                <h4>🧱 בלוקים דינאמיים מומלצים לשבוע:</h4>
+                <p class="dynamic-blocks-note">(משימות אלו גמישות – מומלץ לשבצן בימים א'-ה' לפי הנוחות. ראי הצעות בפירוט היומי תחת 'כדאי')</p>
+                <ul class="dynamic-blocks">
+                    <li class="social-psych"><strong class="dynamic-block-course-name">פסיכולוגיה חברתית (מבחן!):</strong> חזרה סופית למבחן, תרגול שאלות, סיכום חומר (כ-10-12 שעות, מרוכזות בתחילת השבוע).</li>
+                    <li class="stats"><strong class="dynamic-block-course-name">הסקה סטטיסטית (מאתגר! מבחן בקרוב!):</strong> עבודה על פרויקט R + התחלת חזרה ממוקדת למבחן (10.7) (כ-6-8 שעות).</li>
+                    <li class="qualitative"><strong class="dynamic-block-course-name">שיטות מחקר איכותניות (חשוב!):</strong> התקדמות משמעותית במחקר האמפירי (כ-5-7 שעות).</li>
+                    <li class="comm-law"><strong class="dynamic-block-course-name">דיני תקשורת (חשוב!):</strong> חזרה למבחן סופי (אם טרם התקיים) (כ-3-4 שעות).</li>
+                    <li class="psychopathology"><strong class="dynamic-block-course-name">פסיכופתולוגיה:</strong> המשך השלמת חומר/חזרה (בהתאם לצורך, כ-2-3 שעות).</li>
+                    <li class="experimental"><strong class="dynamic-block-course-name">מתודולוגיה בפסיכולוגיה ניסויית:</strong> עבודה על "עבודה ב'" (כ-3-4 שעות).</li>
+                </ul>
+            </div>
+            <div class="daily-breakdown">
+                <div class="day-card">
+                    <h4>יום ראשון (30.6)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w5-d1-m1" onchange="toggleTaskCompletion('task-w5-d1-m1')"> <label for="task-w5-d1-m1">(אין כרגע עוגנים ליום זה)</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-social-psych"><input type="checkbox" id="task-w5-d1-r1" onchange="toggleTaskCompletion('task-w5-d1-r1')"> <label for="task-w5-d1-r1"><strong>פסיכולוגיה חברתית:</strong> 4-5 שעות – יום חזרה אינטנסיבי למבחן (חזרה על כל החומר, תרגול שאלות).</label></li>
+                        <li class="task-stats"><input type="checkbox" id="task-w5-d1-r2" onchange="toggleTaskCompletion('task-w5-d1-r2')"> <label for="task-w5-d1-r2"><strong>הסקה סטטיסטית:</strong> 2 שעות – עבודה על פרויקט R.</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li class="task-qualitative"><input type="checkbox" id="task-w5-d1-b1" onchange="toggleTaskCompletion('task-w5-d1-b1')"> <label for="task-w5-d1-b1"><strong>שיטות מחקר איכותניות:</strong> שעה – קריאה/ניתוח נתונים למטלה.</label></li></ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום שני (1.7)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w5-d2-m1" onchange="toggleTaskCompletion('task-w5-d2-m1')"> <label for="task-w5-d2-m1">❗❗ **מבחן מסכם בפסיכולוגיה חברתית!**</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-social-psych"><input type="checkbox" id="task-w5-d2-r1" onchange="toggleTaskCompletion('task-w5-d2-r1')"> <label for="task-w5-d2-r1"><strong>פסיכולוגיה חברתית:</strong> חזרה קלה של הרגע האחרון בבוקר, מנוחה מספקת לפני המבחן.</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li><input type="checkbox" id="task-w5-d2-b1" onchange="toggleTaskCompletion('task-w5-d2-b1')"> <label for="task-w5-d2-b1">מנוחה והתאוששות אחרי המבחן! כל הכבוד!</label></li></ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום שלישי (2.7)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w5-d3-m1" onchange="toggleTaskCompletion('task-w5-d3-m1')"> <label for="task-w5-d3-m1">(אין כרגע עוגנים ליום זה)</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-stats"><input type="checkbox" id="task-w5-d3-r1" onchange="toggleTaskCompletion('task-w5-d3-r1')"> <label for="task-w5-d3-r1"><strong>הסקה סטטיסטית:</strong> 3-4 שעות – התחלת חזרה ממוקדת למבחן + עבודה על פרויקט R.</label></li>
+                        <li class="task-qualitative"><input type="checkbox" id="task-w5-d3-r2" onchange="toggleTaskCompletion('task-w5-d3-r2')"> <label for="task-w5-d3-r2"><strong>שיטות מחקר איכותניות:</strong> 2-3 שעות – עבודה על המטלה.</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li class="task-comm-law"><input type="checkbox" id="task-w5-d3-b1" onchange="toggleTaskCompletion('task-w5-d3-b1')"> <label for="task-w5-d3-b1"><strong>דיני תקשורת:</strong> שעה – חזרה על נושא ספציפי.</label></li></ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום רביעי (3.7)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w5-d4-m1" onchange="toggleTaskCompletion('task-w5-d4-m1')"> <label for="task-w5-d4-m1">(בדקי אם יש תרגולים/מפגשים שנקבעו)</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-stats"><input type="checkbox" id="task-w5-d4-r1" onchange="toggleTaskCompletion('task-w5-d4-r1')"> <label for="task-w5-d4-r1"><strong>הסקה סטטיסטית:</strong> 3-4 שעות – המשך חזרה למבחן + עבודה על פרויקט R.</label></li>
+                        <li class="task-qualitative"><input type="checkbox" id="task-w5-d4-r2" onchange="toggleTaskCompletion('task-w5-d4-r2')"> <label for="task-w5-d4-r2"><strong>שיטות מחקר איכותניות:</strong> 2-3 שעות – המשך עבודה על המטלה.</label></li>
+                        <li class="task-psychopathology"><input type="checkbox" id="task-w5-d4-r3" onchange="toggleTaskCompletion('task-w5-d4-r3')"> <label for="task-w5-d4-r3"><strong>פסיכופתולוגיה:</strong> 1.5 שעות – חזרה/השלמות.</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li class="task-experimental"><input type="checkbox" id="task-w5-d4-b1" onchange="toggleTaskCompletion('task-w5-d4-b1')"> <label for="task-w5-d4-b1"><strong>מתודולוגיה:</strong> עבודה על מטלה ב'.</label></li></ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום חמישי (4.7)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w5-d5-m1" onchange="toggleTaskCompletion('task-w5-d5-m1')"> <label for="task-w5-d5-m1">(בדקי אם יש תרגולים/מפגשים שנקבעו)</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-stats"><input type="checkbox" id="task-w5-d5-r1" onchange="toggleTaskCompletion('task-w5-d5-r1')"> <label for="task-w5-d5-r1"><strong>הסקה סטטיסטית:</strong> 2-3 שעות – חזרה למבחן, בדגש על תרגול שאלות.</label></li>
+                        <li class="task-qualitative"><input type="checkbox" id="task-w5-d5-r2" onchange="toggleTaskCompletion('task-w5-d5-r2')"> <label for="task-w5-d5-r2"><strong>שיטות מחקר איכותניות:</strong> 2-3 שעות – התקדמות בכתיבה/ניתוח.</label></li>
+                        <li class="task-comm-law"><input type="checkbox" id="task-w5-d5-r3" onchange="toggleTaskCompletion('task-w5-d5-r3')"> <label for="task-w5-d5-r3"><strong>דיני תקשורת:</strong> 1.5 שעות – המשך חזרה למבחן (אם רלוונטי).</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li><input type="checkbox" id="task-w5-d5-b1" onchange="toggleTaskCompletion('task-w5-d5-b1')"> <label for="task-w5-d5-b1">תכנון למידה לסוף השבוע אם יש צורך דחוף.</label></li></ul>
+                </div>
+            </div>
+        </div>
+        <div id="week6" class="week-content">
+            <div class="week-header"><h2>שבוע 6: 7 ביולי – 13 ביולי</h2></div>
+             <div class="weekly-overview">
+                <h3>🌟 פוקוס השבוע: כל הכוח למבחן בהסקה סטטיסטית (10.7)! וסיום מטלות חשובות.</h3>
+                <p>💡 <strong>טיפ ADHD-י:</strong> צרי "טקסי למידה" קטנים. למשל, הכנת כוס תה אהוב לפני שמתיישבים ללמוד. זה עוזר ליצור אסוציאציה חיובית.</p>
+                <h4>📍 עוגנים מרכזיים לשבוע:</h4>
+                <ul class="anchors">
+                    <li><strong>חמישי, 10.7:</strong> ❗❗ **מבחן מסכם בהסקה סטטיסטית!**</li>
+                    <li><strong>כל השבוע:</strong> (אפשרי) הגשת פרויקט R בהסקה סטטיסטית (**תלוי בתאריך שייקבע – יש לברר בהקדם!**).</li>
+                    <li><strong>כל השבוע:</strong> המשך עבודה אינטנסיבית על המטלה הסופית ב"שיטות מחקר איכותניות" (הגשה 31.7).</li>
+                </ul>
+                <h4>🧱 בלוקים דינאמיים מומלצים לשבוע:</h4>
+                <p class="dynamic-blocks-note">(משימות אלו גמישות – מומלץ לשבצן בימים א'-ה' לפי הנוחות. ראי הצעות בפירוט היומי תחת 'כדאי')</p>
+                <ul class="dynamic-blocks">
+                    <li class="stats"><strong class="dynamic-block-course-name">הסקה סטטיסטית (מבחן!):</strong> חזרה סופית למבחן, תרגול אינטנסיבי, סגירת קצוות בפרויקט R (כ-12-15 שעות, מרוכזות בתחילת השבוע).</li>
+                    <li class="qualitative"><strong class="dynamic-block-course-name">שיטות מחקר איכותניות (חשוב!):</strong> כתיבה וניתוח למטלה הסופית (כ-6-8 שעות).</li>
+                    <li class="comm-law"><strong class="dynamic-block-course-name">דיני תקשורת (חשוב!):</strong> המשך חזרה למבחן סופי (אם טרם התקיים) (כ-3-4 שעות).</li>
+                    <li class="psychopathology"><strong class="dynamic-block-course-name">פסיכופתולוגיה:</strong> חזרה למבחן (בהתאם למועד אם יתפרסם) (כ-3-4 שעות).</li>
+                    <li class="experimental"><strong class="dynamic-block-course-name">מתודולוגיה בפסיכולוגיה ניסויית:</strong> עבודה על "עבודה ב'" (כ-3-4 שעות).</li>
+                </ul>
+            </div>
+            <div class="daily-breakdown">
+                <div class="day-card">
+                    <h4>יום ראשון (7.7)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w6-d1-m1" onchange="toggleTaskCompletion('task-w6-d1-m1')"> <label for="task-w6-d1-m1">(אין כרגע עוגנים ליום זה)</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-stats"><input type="checkbox" id="task-w6-d1-r1" onchange="toggleTaskCompletion('task-w6-d1-r1')"> <label for="task-w6-d1-r1"><strong>הסקה סטטיסטית:</strong> 4-5 שעות – יום חזרה אינטנסיבי למבחן + עבודה על פרויקט R.</label></li>
+                        <li class="task-qualitative"><input type="checkbox" id="task-w6-d1-r2" onchange="toggleTaskCompletion('task-w6-d1-r2')"> <label for="task-w6-d1-r2"><strong>שיטות מחקר איכותניות:</strong> 2 שעות – עבודה על המטלה.</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li><input type="checkbox" id="task-w6-d1-b1" onchange="toggleTaskCompletion('task-w6-d1-b1')"> <label for="task-w6-d1-b1">מנוחה קצרה וממוקדת בין מקבצי למידה אינטנסיביים.</label></li></ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום שני (8.7)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w6-d2-m1" onchange="toggleTaskCompletion('task-w6-d2-m1')"> <label for="task-w6-d2-m1">(אין כרגע עוגנים ליום זה)</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-stats"><input type="checkbox" id="task-w6-d2-r1" onchange="toggleTaskCompletion('task-w6-d2-r1')"> <label for="task-w6-d2-r1"><strong>הסקה סטטיסטית:</strong> 4-5 שעות – יום חזרה אינטנסיבי למבחן + סיום/הגשת פרויקט R אם רלוונטי.</label></li>
+                        <li class="task-comm-law"><input type="checkbox" id="task-w6-d2-r2" onchange="toggleTaskCompletion('task-w6-d2-r2')"> <label for="task-w6-d2-r2"><strong>דיני תקשורת:</strong> 1.5 שעות – חזרה למבחן (אם רלוונטי).</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li class="task-experimental"><input type="checkbox" id="task-w6-d2-b1" onchange="toggleTaskCompletion('task-w6-d2-b1')"> <label for="task-w6-d2-b1"><strong>מתודולוגיה:</strong> עבודה על מטלה ב'.</label></li></ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום שלישי (9.7)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w6-d3-m1" onchange="toggleTaskCompletion('task-w6-d3-m1')"> <label for="task-w6-d3-m1">(אין כרגע עוגנים ליום זה)</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-stats"><input type="checkbox" id="task-w6-d3-r1" onchange="toggleTaskCompletion('task-w6-d3-r1')"> <label for="task-w6-d3-r1"><strong>הסקה סטטיסטית:</strong> 3-4 שעות – חזרה אחרונה וממוקדת למבחן, תרגול שאלות ממבחנים קודמים אם יש.</label></li>
+                        <li class="task-qualitative"><input type="checkbox" id="task-w6-d3-r2" onchange="toggleTaskCompletion('task-w6-d3-r2')"> <label for="task-w6-d3-r2"><strong>שיטות מחקר איכותניות:</strong> 2-3 שעות – התקדמות במטלה.</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li class="task-psychopathology"><input type="checkbox" id="task-w6-d3-b1" onchange="toggleTaskCompletion('task-w6-d3-b1')"> <label for="task-w6-d3-b1"><strong>פסיכופתולוגיה:</strong> חזרה קצרה על נושא מרכזי.</label></li></ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום רביעי (10.7)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w6-d4-m1" onchange="toggleTaskCompletion('task-w6-d4-m1')"> <label for="task-w6-d4-m1">❗❗ **מבחן מסכם בהסקה סטטיסטית!**</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-stats"><input type="checkbox" id="task-w6-d4-r1" onchange="toggleTaskCompletion('task-w6-d4-r1')"> <label for="task-w6-d4-r1"><strong>הסקה סטטיסטית:</strong> חזרה קלה של הרגע האחרון בבוקר, מנוחה מספקת לפני המבחן.</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li><input type="checkbox" id="task-w6-d4-b1" onchange="toggleTaskCompletion('task-w6-d4-b1')"> <label for="task-w6-d4-b1">מנוחה והתאוששות אחרי המבחן! עבודה מצוינת!</label></li></ul>
+                </div>
+                <div class="day-card">
+                    <h4>יום חמישי (11.7)</h4>
+                    <h5 class="mandatory-title"><span class="emoji">❗</span> חובות:</h5><ul class="mandatory-tasks"><li><input type="checkbox" id="task-w6-d5-m1" onchange="toggleTaskCompletion('task-w6-d5-m1')"> <label for="task-w6-d5-m1">(אין כרגע עוגנים ליום זה)</label></li></ul>
+                    <h5 class="recommended-title"><span class="emoji">👍</span> כדאי:</h5>
+                    <ul class="recommended-tasks">
+                        <li class="task-qualitative"><input type="checkbox" id="task-w6-d5-r1" onchange="toggleTaskCompletion('task-w6-d5-r1')"> <label for="task-w6-d5-r1"><strong>שיטות מחקר איכותניות:</strong> 4-5 שעות – יום עבודה מרוכז על המטלה הסופית (הגשה ב-31.7).</label></li>
+                        <li class="task-comm-law"><input type="checkbox" id="task-w6-d5-r2" onchange="toggleTaskCompletion('task-w6-d5-r2')"> <label for="task-w6-d5-r2"><strong>דיני תקשורת:</strong> 2 שעות – חזרה למבחן (אם רלוונטי וטרם התקיים).</label></li>
+                    </ul>
+                    <h5 class="bonus-title"><span class="emoji">⭐</span> בונוס:</h5><ul class="bonus-tasks"><li><input type="checkbox" id="task-w6-d5-b1" onchange="toggleTaskCompletion('task-w6-d5-b1')"> <label for="task-w6-d5-b1">התחלת ארגון חומרי לימוד לקראת שאר המבחנים/הגשות שנותרו ביולי.</label></li></ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // ... (קוד ה-JavaScript נשאר זהה) ...
+        const STORAGE_KEY_PREFIX = 'academicPlanner_task_kids_v2_'; // עדכון קטן ל-prefix למקרה הצורך
+
+        function showWeek(weekId, clickedTab) {
+            var i, weekContents, weekTabs;
+            weekContents = document.getElementsByClassName("week-content");
+            for (i = 0; i < weekContents.length; i++) {
+                weekContents[i].classList.remove("active");
+            }
+            weekTabs = document.getElementsByClassName("week-tab");
+            for (i = 0; i < weekTabs.length; i++) {
+                weekTabs[i].classList.remove("active");
+            }
+            var selectedWeek = document.getElementById(weekId);
+            if (selectedWeek) {
+                selectedWeek.classList.add("active");
+            }
+            if (clickedTab) { 
+                clickedTab.classList.add("active");
+            } else { 
+                for (i = 0; i < weekTabs.length; i++) {
+                    if (weekTabs[i].getAttribute('onclick') && weekTabs[i].getAttribute('onclick').includes("showWeek('" + weekId + "'")) {
+                        weekTabs[i].classList.add("active");
+                        break;
+                    }
+                }
+            }
+        }
+
+        function toggleTaskCompletion(taskId) {
+            const checkbox = document.getElementById(taskId);
+            const listItem = checkbox.closest('li'); 
+
+            if (!listItem) {
+                console.error("Could not find parent <li> for checkbox:", taskId);
+                return; 
+            }
+
+            if (checkbox.checked) {
+                listItem.classList.add('task-completed');
+                localStorage.setItem(STORAGE_KEY_PREFIX + taskId, 'true');
+            } else {
+                listItem.classList.remove('task-completed');
+                localStorage.setItem(STORAGE_KEY_PREFIX + taskId, 'false');
+            }
+        }
+
+        function loadTaskStates() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"][id^="task-"]');
+            checkboxes.forEach(function(checkbox) {
+                const taskId = checkbox.id;
+                const isCompleted = localStorage.getItem(STORAGE_KEY_PREFIX + taskId);
+                const listItem = checkbox.closest('li'); 
+
+                if (!listItem) {
+                    console.warn("Could not find parent <li> for checkbox during load:", taskId);
+                    return;
+                }
+
+                if (isCompleted === 'true') {
+                    checkbox.checked = true;
+                    listItem.classList.add('task-completed');
+                } else {
+                    checkbox.checked = false;
+                    listItem.classList.remove('task-completed');
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstTab = document.querySelector('.week-tab');
+            if (firstTab) {
+                const onclickAttr = firstTab.getAttribute('onclick');
+                if (onclickAttr) { 
+                    const weekIdMatch = onclickAttr.match(/showWeek\('([^']+)'/);
+                    if (weekIdMatch && weekIdMatch[1]) {
+                        showWeek(weekIdMatch[1], firstTab); 
+                    } else {
+                        showWeek('week1', firstTab); // Fallback
+                    }
+                } else {
+                    showWeek('week1', firstTab); // Fallback
+                }
+            }
+            loadTaskStates();
+        });
+    </script>
+</body>
+</html>
